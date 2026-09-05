@@ -1,59 +1,80 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    "https://aitexthumanizer.krishaiworks.com"
+    "https://aigrammarwritingfixer.krishaiworks.com"
   ),
 
-  title: "AI Text Humanizer | Make AI Text Sound Human",
+  title: {
+    default: "AI Grammar & Writing Fixer | Improve Your Writing",
+    template: "%s | AI Grammar & Writing Fixer",
+  },
 
   description:
-    "Humanize AI-generated text and make it sound more natural, clear, and engaging. Rewrite AI content into natural-sounding text with the free AI Text Humanizer by KrishAIWorks.",
+    "Fix grammar, spelling, punctuation, sentence structure, and writing mistakes instantly with the AI Grammar & Writing Fixer by KrishAIWorks.",
 
   keywords: [
-    "AI Text Humanizer",
-    "AI Humanizer",
-    "AI Text Humanizer Free",
-    "Humanize AI Text",
-    "Humanize AI Content",
-    "AI Content Humanizer",
-    "AI Text Rewriter",
-    "Make AI Text Human",
-    "Humanize AI Writing",
-    "Natural Text Rewriter",
+    "AI Grammar Checker",
+    "AI Grammar Fixer",
+    "Grammar Checker",
+    "Grammar Fixer",
+    "AI Writing Fixer",
+    "AI Writing Assistant",
+    "Grammar Correction Tool",
+    "AI Proofreading Tool",
+    "Spelling and Grammar Checker",
+    "Writing Improvement Tool",
+    "Fix Grammar with AI",
+    "AI Proofreader",
+    "Free Grammar Checker",
+    "KrishAIWorks",
   ],
 
   authors: [
     {
       name: "KrishAIWorks",
-      url: "https://krishaiworks.vercel.app",
+      url: "https://krishaiworks.com",
     },
   ],
 
   creator: "KrishAIWorks",
   publisher: "KrishAIWorks",
 
+  applicationName: "AI Grammar & Writing Fixer",
+
+  category: "technology",
+
   alternates: {
     canonical:
-      "https://aitexthumanizer.krishaiworks.com/",
+      "https://aigrammarwritingfixer.krishaiworks.com/",
   },
 
   openGraph: {
-    title: "AI Text Humanizer | KrishAIWorks",
-    description:
-      "Humanize AI-generated text and make it sound more natural, clear, and engaging.",
-    url: "https://aitexthumanizer.krishaiworks.com/",
-    siteName: "KrishAIWorks",
     type: "website",
     locale: "en_US",
+    url: "https://aigrammarwritingfixer.krishaiworks.com/",
+    siteName: "KrishAIWorks",
+    title: "AI Grammar & Writing Fixer | KrishAIWorks",
+    description:
+      "Fix grammar, spelling, punctuation, and writing mistakes instantly with AI.",
+    images: [
+      {
+        url: "/logo.png",
+        width: 512,
+        height: 512,
+        alt: "AI Grammar & Writing Fixer - KrishAIWorks",
+      },
+    ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "AI Text Humanizer | KrishAIWorks",
+    title: "AI Grammar & Writing Fixer | KrishAIWorks",
     description:
-      "Make AI-generated text sound natural and human with AI Text Humanizer.",
+      "Improve your writing by fixing grammar, spelling, punctuation, and sentence mistakes with AI.",
+    images: ["/logo.png"],
   },
 
   robots: {
@@ -68,6 +89,12 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -77,7 +104,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-BS6TSMM1ZR"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-BS6TSMM1ZR');
+          `}
+        </Script>
+      </body>
     </html>
   );
 }
