@@ -97,6 +97,74 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krishaiworks.com/#organization",
+      name: "KrishAIWorks",
+      url: "https://krishaiworks.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://krishaiworks.com/logo.png",
+        width: 512,
+        height: 512,
+      },
+    },
+
+    {
+      "@type": "WebSite",
+      "@id": "https://krishaiworks.com/#website",
+      url: "https://krishaiworks.com",
+      name: "KrishAIWorks",
+      description:
+        "AI-powered tools, productivity utilities, automation, chatbots, websites and custom digital solutions.",
+      publisher: {
+        "@id": "https://krishaiworks.com/#organization",
+      },
+      inLanguage: "en",
+    },
+
+    {
+      "@type": "WebApplication",
+      "@id":
+        "https://aigrammarwritingfixer.krishaiworks.com/#webapplication",
+      name: "AI Grammar & Writing Fixer",
+      url: "https://aigrammarwritingfixer.krishaiworks.com/",
+      description:
+        "Fix grammar, spelling, punctuation, sentence structure, and writing mistakes instantly with the AI Grammar & Writing Fixer by KrishAIWorks.",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Any",
+      browserRequirements: "Requires a modern web browser.",
+      isPartOf: {
+        "@id": "https://krishaiworks.com/#website",
+      },
+      publisher: {
+        "@id": "https://krishaiworks.com/#organization",
+      },
+    },
+
+    {
+      "@type": "WebPage",
+      "@id":
+        "https://aigrammarwritingfixer.krishaiworks.com/#webpage",
+      url: "https://aigrammarwritingfixer.krishaiworks.com/",
+      name: "AI Grammar & Writing Fixer | Improve Your Writing",
+      description:
+        "Fix grammar, spelling, punctuation, sentence structure, and writing mistakes instantly with the AI Grammar & Writing Fixer by KrishAIWorks.",
+      isPartOf: {
+        "@id": "https://krishaiworks.com/#website",
+      },
+      about: {
+        "@id":
+          "https://aigrammarwritingfixer.krishaiworks.com/#webapplication",
+      },
+      inLanguage: "en",
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -106,6 +174,14 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
+
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd),
+          }}
+        />
 
         {/* Google Analytics */}
         <Script
